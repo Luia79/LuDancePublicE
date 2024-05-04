@@ -5,21 +5,34 @@
 package ldsystem;
 
 import java.awt.BorderLayout;
+import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import Controlador.bd.Transacciones;
+import Controlador.bd.SQLNivelTb;
+import java.sql.SQLException;
 /**
  *
  * @author luise
  */
 public class NivelAlumna extends javax.swing.JPanel {
-
+    
+    Transacciones transacciones;
     DefaultTableModel modelo;
-    public static int idSeleccionado;    
+    public int idSeleccionado;   
+    int indice = -1;
+
+    
     
     /**
-     * Creates new form Alumnas
+     * Creates new form NivelUno
      */
-    public NivelAlumna() {
+    public NivelAlumna() throws SQLException {
         initComponents();
+        this.transacciones = new Transacciones();
+        this.modelo = new DefaultTableModel();
+        this.mostrarNivel();
+        
     }
 
     /**
@@ -44,10 +57,12 @@ public class NivelAlumna extends javax.swing.JPanel {
         tbNivel.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         tbNivel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nivel", "Horario"
+                "Nivel", "Empieza", "Termina"
             }
         ));
         tbNivel.setSelectionBackground(new java.awt.Color(255, 255, 255));
@@ -71,36 +86,81 @@ public class NivelAlumna extends javax.swing.JPanel {
         nivelAlumn.setLayout(nivelAlumnLayout);
         nivelAlumnLayout.setHorizontalGroup(
             nivelAlumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addGroup(nivelAlumnLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nivelAlumnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSeleccionarN, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addContainerGap())
         );
         nivelAlumnLayout.setVerticalGroup(
             nivelAlumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(nivelAlumnLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(btnSeleccionarN, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         add(nivelAlumn, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeleccionarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarNActionPerformed
-        Alumnas al1 = new Alumnas();
-        al1.setSize(880,380);
-        al1.setLocation(0,0);
+       
+        
 
-        nivelAlumn.removeAll();
-        nivelAlumn.add(al1, BorderLayout.CENTER);
-        nivelAlumn.revalidate();
-        nivelAlumn.repaint();
+        
+
+        if(indice >= 0){
+            switch (indice) {
+                case 0:
+            NivelUno nive1 = new NivelUno();
+            nive1.setSize(1040,440);
+            nive1.setLocation(0,0);
+
+            nivelAlumn.removeAll();
+            nivelAlumn.add(nive1, BorderLayout.CENTER);
+            nivelAlumn.revalidate();
+            nivelAlumn.repaint();
+                    break;
+                case 1:
+            Niveldos nive2 = new Niveldos();
+            nive2.setSize(1040,440);
+            nive2.setLocation(0,0);
+
+            nivelAlumn.removeAll();
+            nivelAlumn.add(nive2, BorderLayout.CENTER);
+            nivelAlumn.revalidate();
+            nivelAlumn.repaint();
+                    break;
+                   case 2:
+            NivelTres nive3 = new NivelTres();
+            nive3.setSize(1040,440);
+            nive3.setLocation(0,0);
+
+            nivelAlumn.removeAll();
+            nivelAlumn.add(nive3, BorderLayout.CENTER);
+            nivelAlumn.revalidate();
+            nivelAlumn.repaint();
+                    break;
+                default:
+                    System.out.println("Indice no valido");
+            }
+        }else {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado un nivel");
+        }
     }//GEN-LAST:event_btnSeleccionarNActionPerformed
 
     private void tbNivelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNivelMouseClicked
+        
+         indice = tbNivel.getSelectedRow();
+        
+        
+        
+        
         
     }//GEN-LAST:event_tbNivelMouseClicked
 
@@ -111,4 +171,48 @@ public class NivelAlumna extends javax.swing.JPanel {
     private javax.swing.JPanel nivelAlumn;
     private javax.swing.JTable tbNivel;
     // End of variables declaration//GEN-END:variables
-}
+
+ public void mostrarNivel() throws SQLException {
+  
+     this.modelo = new DefaultTableModel(){
+         @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Hacer que todas las celdas sean no editables
+     }
+     };
+        this.modelo.addColumn("ID");
+        this.modelo.addColumn("Nivel");
+        this.modelo.addColumn("Empeiza");
+        this.modelo.addColumn("Termina");
+     
+     
+     try {
+            
+            
+
+            ResultSet resultado = this.transacciones.seleccionar(SQLNivelTb.VerNivel());
+
+            while (resultado.next()) {
+                Object [] level = {
+                resultado.getInt(1),
+                resultado.getString(2),
+                resultado.getString(3),
+                resultado.getString(4)
+                
+
+                };
+                modelo.addRow(level);
+            }//cierra while
+            this.tbNivel.setModel(modelo);
+        } catch (Exception e) {
+            System.out.println("error: " + e.getMessage());
+
+        }//cierra catch
+    }
+ 
+ 
+ }//Cierra mostrarNivel
+
+
+
+

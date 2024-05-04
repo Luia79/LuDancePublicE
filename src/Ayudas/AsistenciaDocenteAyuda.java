@@ -2,20 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ldsystem;
+package Ayudas;
 
-import javax.swing.JOptionPane;
+
 
 /**
  *
  * @author luise
  */
-public class AsistenciaDocente extends javax.swing.JPanel {
+public class AsistenciaDocenteAyuda extends javax.swing.JPanel {
 
     /**
      * Creates new form AsistenciaDocente
      */
-    public AsistenciaDocente() {
+    public AsistenciaDocenteAyuda() {
         initComponents();
     }
 
@@ -32,7 +32,6 @@ public class AsistenciaDocente extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbAsistencia = new javax.swing.JTable();
         btnGuardarAsis = new javax.swing.JButton();
-        btAyuda = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -56,10 +55,6 @@ public class AsistenciaDocente extends javax.swing.JPanel {
             }
         });
 
-        btAyuda.setBackground(new java.awt.Color(85, 142, 213));
-        btAyuda.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        btAyuda.setText("Ayuda");
-
         javax.swing.GroupLayout listLayout = new javax.swing.GroupLayout(list);
         list.setLayout(listLayout);
         listLayout.setHorizontalGroup(
@@ -67,9 +62,7 @@ public class AsistenciaDocente extends javax.swing.JPanel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btAyuda)
-                .addGap(119, 119, 119)
-                .addComponent(btnGuardarAsis, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGuardarAsis)
                 .addGap(31, 31, 31))
         );
         listLayout.setVerticalGroup(
@@ -77,10 +70,8 @@ public class AsistenciaDocente extends javax.swing.JPanel {
             .addGroup(listLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardarAsis, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAyuda))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(btnGuardarAsis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         add(list, java.awt.BorderLayout.CENTER);
@@ -92,7 +83,6 @@ public class AsistenciaDocente extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAyuda;
     private javax.swing.JButton btnGuardarAsis;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel list;

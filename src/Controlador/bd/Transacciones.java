@@ -4,12 +4,34 @@
  */
 package Controlador.bd;
 import Modelo.Usuario;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
 
 /**
  *
  * @author luise
  */
 public class Transacciones {
+    Statement st;
+    int filaAfectada;
+    
+    public Transacciones() {
+        this.st = null;
+        this.filaAfectada = 0;
+    }
+    
+    public ResultSet seleccionar(String sql) throws SQLException {
+        try {
+            //preparando la conexion 
+            this.st = ConexionBD.conexion.createStatement();
+            //ejecutamos el sql y obtenemos resultados
+            return this.st.executeQuery(sql);
+        } catch (ClassCastException e) {
+            System.err.println("Error al seleccionar: " + e.getMessage());
+            return null;
+        }
+    }
     
      public boolean validarSesion(Usuario usuario){
     

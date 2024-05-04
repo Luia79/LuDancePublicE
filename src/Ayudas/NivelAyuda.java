@@ -2,23 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ldsystem;
+package Ayudas;
 
+import ldsystem.*;
 import java.awt.BorderLayout;
-import static java.awt.image.ImageObserver.WIDTH;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author luise
  */
-public class Alumnas extends javax.swing.JPanel {
+public class NivelAyuda extends javax.swing.JPanel {
 
     /**
-     * Creates new form Inscripcion
+     * Creates new form InscripcionNivelUno
      */
-    public Alumnas() {
+    public NivelAyuda() {
         initComponents();
+        
+        JOptionPane.showMessageDialog(null, "En esta parte muestran los nombres");
     }
 
     /**
@@ -35,6 +40,9 @@ public class Alumnas extends javax.swing.JPanel {
         tbAlumnas = new javax.swing.JTable();
         tbAgregarAlumna = new javax.swing.JButton();
         tbnEliminarAlumna = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -43,13 +51,10 @@ public class Alumnas extends javax.swing.JPanel {
         tbAlumnas.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         tbAlumnas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+
             },
             new String [] {
-                "Nombre"
+                "Datos de alumnas"
             }
         ));
         jScrollPane1.setViewportView(tbAlumnas);
@@ -72,43 +77,60 @@ public class Alumnas extends javax.swing.JPanel {
             }
         });
 
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Si selecciona el boton de agregar podra agregar una nueva alumna");
+
+        jLabel2.setText("y si desea borrar una alumna tendra que seleccionarla y precionar borrar");
+
         javax.swing.GroupLayout pnInsLayout = new javax.swing.GroupLayout(pnIns);
         pnIns.setLayout(pnInsLayout);
         pnInsLayout.setHorizontalGroup(
             pnInsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnInsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnInsLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1028, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnInsLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(btnRegresar)
+                .addGap(141, 141, 141)
+                .addGroup(pnInsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(29, 29, 29)
                 .addComponent(tbAgregarAlumna, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(tbnEliminarAlumna, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addComponent(tbnEliminarAlumna, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnInsLayout.setVerticalGroup(
             pnInsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnInsLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnInsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(pnInsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnInsLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(btnRegresar))
+                    .addGroup(pnInsLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel2))
                     .addComponent(tbAgregarAlumna, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tbnEliminarAlumna, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
+                    .addComponent(tbnEliminarAlumna, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         add(pnIns, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbAgregarAlumnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbAgregarAlumnaActionPerformed
-        
-        //Manda a llamar el JPanel de Inscripcion
-        Inscripcion ins1 = new Inscripcion();
-        ins1.setSize(880,380);
-        ins1.setLocation(0,0);
 
-        pnIns.removeAll();
-        pnIns.add(ins1, BorderLayout.CENTER);
-        pnIns.revalidate();
-        pnIns.repaint();
     }//GEN-LAST:event_tbAgregarAlumnaActionPerformed
 
     private void tbnEliminarAlumnaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnEliminarAlumnaActionPerformed
@@ -127,8 +149,27 @@ public class Alumnas extends javax.swing.JPanel {
         }//cierre del else
     }//GEN-LAST:event_tbnEliminarAlumnaActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        try {
+            //Manda a llamar el JPanel de InscripcionNivelUno
+            NivelAlumna nAl1 = new NivelAlumna();
+            nAl1.setSize(1040, 440);
+            nAl1.setLocation(0, 0);
+            
+            pnIns.removeAll();
+            pnIns.add(nAl1, BorderLayout.CENTER);
+            pnIns.revalidate();
+            pnIns.repaint();
+        } catch (SQLException ex) {
+            Logger.getLogger(NivelAyuda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnIns;
     private javax.swing.JButton tbAgregarAlumna;

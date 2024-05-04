@@ -27,28 +27,28 @@ public class Menu2 extends javax.swing.JPanel {
     private void initComponents() {
 
         color = new javax.swing.JPanel();
-        logo2 = new javax.swing.JLabel();
+        logoDos = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
         color.setBackground(new java.awt.Color(144, 214, 255));
 
-        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
+        logoDos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout colorLayout = new javax.swing.GroupLayout(color);
         color.setLayout(colorLayout);
         colorLayout.setHorizontalGroup(
             colorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, colorLayout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
-                .addComponent(logo2)
-                .addGap(267, 267, 267))
+            .addGroup(colorLayout.createSequentialGroup()
+                .addGap(360, 360, 360)
+                .addComponent(logoDos)
+                .addContainerGap(360, Short.MAX_VALUE))
         );
         colorLayout.setVerticalGroup(
             colorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(colorLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(logo2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130)
+                .addComponent(logoDos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(140, Short.MAX_VALUE))
         );
 
@@ -58,6 +58,6 @@ public class Menu2 extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel color;
-    private javax.swing.JLabel logo2;
+    private javax.swing.JLabel logoDos;
     // End of variables declaration//GEN-END:variables
 }

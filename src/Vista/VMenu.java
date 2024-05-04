@@ -4,8 +4,10 @@
  */
 package Vista;
 
-import static Controlador.bd.ConexionBD.conexion;
 import java.awt.BorderLayout;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ldsystem.*;
 import ldventas.Ventas;
@@ -23,7 +25,7 @@ public class VMenu extends javax.swing.JFrame {
     public VMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -35,31 +37,28 @@ public class VMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pnContenedor = new javax.swing.JPanel();
+        pnMenu = new javax.swing.JPanel();
         btnInicio = new javax.swing.JButton();
         btnAlumnos = new javax.swing.JButton();
         btnVenta = new javax.swing.JButton();
         btnLista = new javax.swing.JButton();
         btnInventario = new javax.swing.JButton();
+        logo = new javax.swing.JLabel();
         visor = new javax.swing.JPanel();
         btnApagar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(144, 214, 255));
+        pnContenedor.setBackground(new java.awt.Color(144, 214, 255));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
-
-        jPanel1.setBackground(new java.awt.Color(56, 182, 255));
-        jPanel1.setForeground(new java.awt.Color(56, 182, 255));
+        pnMenu.setBackground(new java.awt.Color(56, 182, 255));
+        pnMenu.setForeground(new java.awt.Color(56, 182, 255));
 
         btnInicio.setBackground(new java.awt.Color(56, 182, 255));
         btnInicio.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnInicio.setText("Inicio");
         btnInicio.setBorder(null);
-        btnInicio.setOpaque(true);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
@@ -70,7 +69,6 @@ public class VMenu extends javax.swing.JFrame {
         btnAlumnos.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnAlumnos.setText("Alumnas");
         btnAlumnos.setBorder(null);
-        btnAlumnos.setOpaque(true);
         btnAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlumnosActionPerformed(evt);
@@ -81,7 +79,6 @@ public class VMenu extends javax.swing.JFrame {
         btnVenta.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnVenta.setText("Ventas");
         btnVenta.setBorder(null);
-        btnVenta.setOpaque(true);
         btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaActionPerformed(evt);
@@ -92,7 +89,6 @@ public class VMenu extends javax.swing.JFrame {
         btnLista.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnLista.setText("Lista");
         btnLista.setBorder(null);
-        btnLista.setOpaque(true);
         btnLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListaActionPerformed(evt);
@@ -103,35 +99,34 @@ public class VMenu extends javax.swing.JFrame {
         btnInventario.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnInventario.setText("Inventario");
         btnInventario.setBorder(null);
-        btnInventario.setOpaque(true);
         btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInventarioActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
+        pnMenu.setLayout(pnMenuLayout);
+        pnMenuLayout.setHorizontalGroup(
+            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMenuLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(122, 122, 122)
                 .addComponent(btnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(76, 76, 76)
                 .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(61, 61, 61)
                 .addComponent(btnLista, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        pnMenuLayout.setVerticalGroup(
+            pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnMenuLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,6 +134,8 @@ public class VMenu extends javax.swing.JFrame {
                     .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
 
         visor.setBackground(new java.awt.Color(144, 214, 255));
         visor.setOpaque(false);
@@ -153,126 +150,56 @@ public class VMenu extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(visor, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(290, 290, 290)
-                                .addComponent(logo))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(856, 856, 856)
-                        .addComponent(btnApagar)))
-                .addGap(23, 23, 23))
+        javax.swing.GroupLayout pnContenedorLayout = new javax.swing.GroupLayout(pnContenedor);
+        pnContenedor.setLayout(pnContenedorLayout);
+        pnContenedorLayout.setHorizontalGroup(
+            pnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnContenedorLayout.createSequentialGroup()
+                .addGroup(pnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnContenedorLayout.createSequentialGroup()
+                        .addGap(1050, 1050, 1050)
+                        .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnContenedorLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(pnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnContenedorLayout.createSequentialGroup()
+                                .addGap(360, 360, 360)
+                                .addComponent(logo))
+                            .addComponent(visor, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnContenedorLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnContenedorLayout.setVerticalGroup(
+            pnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnContenedorLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(visor, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(pnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addGroup(pnContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnContenedorLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(visor, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        getContentPane().add(pnContenedor, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlumnosActionPerformed
-        
-        logo.setIcon(null); //Borra el logo
-        
-        //Manda a llamar el JPanel de NivelAlumna 
-        NivelAlumna nAl1 = new NivelAlumna();
-        nAl1.setSize(880,380);
-        nAl1.setLocation(0,0);
-
-        visor.removeAll();
-        visor.add(nAl1, BorderLayout.CENTER);
-        visor.revalidate();
-        visor.repaint();
-    }//GEN-LAST:event_btnAlumnosActionPerformed
-
-    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
-        
-        //Manda a llamar el JPanel de Menu2
-        Menu2 m1 = new Menu2();
-        m1.setSize(880,380);
-        m1.setLocation(0,0);
-
-        visor.removeAll();
-        visor.add(m1, BorderLayout.CENTER);
-        visor.revalidate();
-        visor.repaint();
-    }//GEN-LAST:event_btnInicioActionPerformed
-
-    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-        logo.setIcon(null); //Borra el logo
-        
-        //Manda a llamar el JPanel de Ventas
-        Ventas ven1 = new Ventas();
-        ven1.setSize(880,380);
-        ven1.setLocation(0,0);
-
-        visor.removeAll();
-        visor.add(ven1, BorderLayout.CENTER);
-        visor.revalidate();
-        visor.repaint();
-    }//GEN-LAST:event_btnVentaActionPerformed
-
-    private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
-        logo.setIcon(null); //Borra el logo 
-        
-        //Manda a llamar el JPanel de AsistenciaDocente
-        AsistenciaDocente ad1 = new AsistenciaDocente();
-        ad1.setSize(880,380);
-        ad1.setLocation(0,0);
-
-        visor.removeAll();
-        visor.add(ad1, BorderLayout.CENTER);
-        visor.revalidate();
-        visor.repaint();
-    }//GEN-LAST:event_btnListaActionPerformed
-
-    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
-        logo.setIcon(null); //Borra el logo 
-        
-        //Manda a llamar el JPanel de AsistenciaDocente
-        Inventario in1 = new Inventario();
-        in1.setSize(880,380);
-        in1.setLocation(0,0);
-
-        visor.removeAll();
-        visor.add(in1, BorderLayout.CENTER);
-        visor.revalidate();
-        visor.repaint();
-    }//GEN-LAST:event_btnInventarioActionPerformed
-
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
-        int op 
+        int op
                 = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres cerrar el programa?", "CONFIRMACION",
-                JOptionPane.YES_NO_OPTION);
-                if (op == JOptionPane.YES_OPTION) {
-                System.exit(WIDTH);
-                
+                        JOptionPane.YES_NO_OPTION);
+        if (op == JOptionPane.YES_OPTION) {
+            System.exit(WIDTH);
 
-                JOptionPane.showMessageDialog(null, "Hasta luego");
+            JOptionPane.showMessageDialog(null, "Hasta luego");
 
         } else {
 
@@ -281,9 +208,87 @@ public class VMenu extends javax.swing.JFrame {
         }//cierre del else
     }//GEN-LAST:event_btnApagarActionPerformed
 
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        logo.setIcon(null); //Borra el logo
 
-    
-    
+        //Manda a llamar el JPanel de AsistenciaDocente
+        Inventario in1 = new Inventario();
+        in1.setSize(1040, 440);
+        in1.setLocation(0, 0);
+
+        visor.removeAll();
+        visor.add(in1, BorderLayout.CENTER);
+        visor.revalidate();
+        visor.repaint();
+    }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
+        logo.setIcon(null); //Borra el logo
+
+        //Manda a llamar el JPanel de AsistenciaDocente
+        AsistenciaDocente ad1 = new AsistenciaDocente();
+        ad1.setSize(1040, 440);
+        ad1.setLocation(0, 0);
+
+        visor.removeAll();
+        visor.add(ad1, BorderLayout.CENTER);
+        visor.revalidate();
+        visor.repaint();
+    }//GEN-LAST:event_btnListaActionPerformed
+
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+        logo.setIcon(null); //Borra el logo
+
+        //Manda a llamar el JPanel de Ventas
+        Ventas ven1 = new Ventas();
+        ven1.setSize(1040, 440);
+        ven1.setLocation(0, 0);
+
+        visor.removeAll();
+        visor.add(ven1, BorderLayout.CENTER);
+        visor.revalidate();
+        visor.repaint();
+    }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlumnosActionPerformed
+
+        try {
+            logo.setIcon(null); //Borra el logo
+            
+            //Manda a llamar el JPanel de NivelAlumna
+            NivelAlumna nAl1 = new NivelAlumna();
+            nAl1.setSize(1040, 440);
+            nAl1.setLocation(0, 0);
+            
+            visor.removeAll();
+            visor.add(nAl1, BorderLayout.CENTER);
+            visor.revalidate();
+            visor.repaint();
+        } catch (SQLException ex) {
+            Logger.getLogger(VMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAlumnosActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+
+        logo.setIcon(null); //Borra el logo
+        //Manda a llamar el JPanel de Menu2
+        Menu2 m1 = new Menu2();
+        m1.setSize(1040, 440);
+        m1.setLocation(0, 0);
+
+        visor.removeAll();
+        visor.add(m1, BorderLayout.CENTER);
+        visor.revalidate();
+        visor.repaint();
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+//    public static void main(String[] args) {
+//
+//        new VMenu().setVisible(true);
+//
+//    } // close main
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlumnos;
@@ -292,9 +297,9 @@ public class VMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnLista;
     private javax.swing.JButton btnVenta;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logo;
+    private javax.swing.JPanel pnContenedor;
+    private javax.swing.JPanel pnMenu;
     private javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
 }

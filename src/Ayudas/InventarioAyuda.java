@@ -2,31 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package ldInventario;
+package Ayudas;
 
-import Controlador.bd.SQLInvetario;
-import Controlador.bd.Transacciones;
-import java.sql.ResultSet;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author luise
  */
-public class Inventario extends javax.swing.JPanel {
-        Transacciones transacciones;
-        DefaultTableModel modelo;
-        public int idSeleccionado;   
-        int indice = -1;
+public class InventarioAyuda extends javax.swing.JPanel {
 
     /**
      * Creates new form Inventario
      */
-    public Inventario() {
+    public InventarioAyuda() {
         initComponents();
-        this.transacciones = new Transacciones();
-        this.modelo = new DefaultTableModel();
-        this.mostrarInventario();
     }
 
     /**
@@ -54,11 +44,6 @@ public class Inventario extends javax.swing.JPanel {
             }
         ));
         tbInventario.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        tbInventario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbInventarioMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tbInventario);
 
         jComboBox1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
@@ -84,55 +69,10 @@ public class Inventario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tbInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInventarioMouseClicked
-        indice = tbInventario.getSelectedRow();
-    }//GEN-LAST:event_tbInventarioMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbInventario;
     // End of variables declaration//GEN-END:variables
-public void mostrarInventario(){
-  
-     this.modelo = new DefaultTableModel(){
-         @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Hacer que todas las celdas sean no editables
-     }
-     };
-        this.modelo.addColumn("ID");
-        this.modelo.addColumn("Tipo de producto");
-        this.modelo.addColumn("Talla");
-        this.modelo.addColumn("Color");
-        this.modelo.addColumn("stock");
-        this.modelo.addColumn("id_producto");
-     
-     
-     try {
-            
-            
-
-            ResultSet resultado = this.transacciones.seleccionar(SQLInvetario.verNombre());
-
-            while (resultado.next()) {
-                Object [] inv = {
-                resultado.getInt(1),
-                resultado.getString(2),
-                resultado.getString(3),
-                resultado.getString(4),
-                resultado.getString(5),
-                resultado.getInt(6)
-                
-
-                };
-                modelo.addRow(inv);
-            }//cierra while
-            this.tbInventario.setModel(modelo);
-        } catch (Exception e) {
-            System.out.println("error: " + e.getMessage());
-
-        }//cierra catch
- }
 }

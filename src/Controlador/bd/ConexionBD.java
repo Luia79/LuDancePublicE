@@ -16,7 +16,7 @@ public class ConexionBD {
     
     private static final String usuario = "root";
     private static final String contrasenia = "luised_1479";
-    private static final String bd = "colegio2";
+    private static final String bd = "mydb";
     private static final String ip = "localhost";
     private static final String puerto = "3306";
     private static final String ZONE = "serverTimezone=UTC";

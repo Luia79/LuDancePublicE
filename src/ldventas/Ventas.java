@@ -38,6 +38,7 @@ public class Ventas extends javax.swing.JPanel {
         btnCobrarVenta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbVentas = new javax.swing.JTable();
+        btAyuda = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -104,6 +105,9 @@ public class Ventas extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbVentas);
 
+        btAyuda.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btAyuda.setText("Ayuda");
+
         javax.swing.GroupLayout ventLayout = new javax.swing.GroupLayout(vent);
         vent.setLayout(ventLayout);
         ventLayout.setHorizontalGroup(
@@ -111,17 +115,18 @@ public class Ventas extends javax.swing.JPanel {
             .addGroup(ventLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCodigoP)
-                        .addComponent(txtCantidadCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
                     .addGroup(ventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtCodigoP, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtCantidadCompra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                    .addGroup(ventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btAyuda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCobrarVenta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminarPV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgregarPV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE))
+                        .addComponent(btnAgregarPV, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         ventLayout.setVerticalGroup(
             ventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,10 +143,15 @@ public class Ventas extends javax.swing.JPanel {
                 .addComponent(btnAgregarPV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminarPV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(btnCobrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
+                .addComponent(btAyuda)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ventLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(vent, java.awt.BorderLayout.CENTER);
@@ -217,6 +227,7 @@ public class Ventas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAyuda;
     private javax.swing.JButton btnAgregarPV;
     private javax.swing.JButton btnCobrarVenta;
     private javax.swing.JButton btnEliminarPV;
